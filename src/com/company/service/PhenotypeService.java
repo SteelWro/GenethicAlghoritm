@@ -11,7 +11,7 @@ public class PhenotypeService {
         Random randPhenotype;
         while (phenotypes.size() < 20) {
             randPhenotype = new Random();
-            int tmpRand = randPhenotype.nextInt(129);
+            int tmpRand = randPhenotype.nextInt(127)+1;
             phenotypes.put(tmpRand, ChromosomeService.phenotypeToChromosome(tmpRand));
         }
     return phenotypes;

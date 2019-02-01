@@ -32,7 +32,7 @@ public class Population {
         return chromosome;
     }
 
-    public void setChromosome(String  chromosome) {
+    public void setChromosome(String chromosome) {
         this.chromosome = chromosome;
     }
 

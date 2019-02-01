@@ -6,6 +6,7 @@ public interface GeneticAlgorithm {
     void rouletteWheel();
     void crucifixion();
     void mutation();
-
+    boolean ifLargestPhenotype();
+    void increaseQuantityPhenotype();
     void showPopulations();
 }
