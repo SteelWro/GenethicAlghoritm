@@ -20,8 +20,4 @@ public class ChromosomeService {
         chromosome = String.valueOf(result);
         return chromosome;
     }
-
-    public static int chromosomeToPhenotype(String bit){
-        return 0;
-    }
 }

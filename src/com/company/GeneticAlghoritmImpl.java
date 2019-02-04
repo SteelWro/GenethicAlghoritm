@@ -32,32 +32,17 @@ public class GeneticAlghoritmImpl implements GeneticAlgorithm {
         idMAX = 999999;
     }
 
-    public void generateTwentyPopulations(){
-        int i = 0;
-        Map<Integer,String> phenotypesAndChromosomes = PhenotypeService.randTwentyPhenotypes();
-
-        for(Map.Entry<Integer, String> entry : phenotypesAndChromosomes.entrySet()){
-            populations.add(new Population(i,entry.getKey(),entry.getValue()));
-            i++;
-        }
-    }
-
     @Override
-    public void calculateAdjustmentFunction(int a, int b, int c, int d) {
+    public void adjustmentFunction(double a, double b, double c, double d) {
         sumOfAdjustmentFunction = 0;
-        for(Population sub : populations){
-            double tmpAdjustmentFunction = AdjustmentFunctionService.getAdjustmentFunction(a,b,c,d,sub.getPhenotype());
+        for (Population sub : populations) {
+            double tmpAdjustmentFunction = AdjustmentFunctionService.calculateAdjustmentFunction(a, b, c, d, sub.getPhenotype());
             sub.setAdjustmentFunction(tmpAdjustmentFunction);
-
             sumOfAdjustmentFunction += tmpAdjustmentFunction;
-            if(yMAX<=sub.getAdjustmentFunction()){
-                yMAX = sub.getAdjustmentFunction();
-                idMAX = sub.getId();
-                xMAX = sub.getPhenotype();
-            }
         }
-        showPopulations();
-        System.out.println("największy osobnik: "+populations.get(idMAX));
+            showPopulations();
+
+
     }
 
     @Override
@@ -145,9 +130,6 @@ public class GeneticAlghoritmImpl implements GeneticAlgorithm {
         System.out.println("------------------------------------------------------------------------------------------------------------------");
     }
 
-    public void showBestPhenotype(){
-        System.out.println(populations.get(idMAX));
-    }
 
     private char changeBit(char c){
         if(c=='1') return '0';
@@ -172,6 +154,27 @@ public class GeneticAlghoritmImpl implements GeneticAlgorithm {
             }
         }
         return false;
+    }
+
+    public void showMax() {
+        for (Population sub : populations) {
+            if (yMAX < sub.getAdjustmentFunction()) {
+                yMAX = sub.getAdjustmentFunction();
+                idMAX = sub.getId();
+                xMAX = sub.getPhenotype();
+            }
+        }
+            System.out.println("największy osobnik: " + populations.get(idMAX));
+    }
+
+    public void generateTwentyPopulations(){
+        int i = 0;
+        Map<Integer,String> phenotypesAndChromosomes = PhenotypeService.randTwentyPhenotypes();
+
+        for(Map.Entry<Integer, String> entry : phenotypesAndChromosomes.entrySet()){
+            populations.add(new Population(i,entry.getKey(),entry.getValue()));
+            i++;
+        }
     }
 }
 

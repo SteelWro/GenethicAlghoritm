@@ -2,8 +2,11 @@ package com.company.Model;
 
 public class Population {
     private int id;
+
     private int phenotype;
+
     private String chromosome;
+
     private double adjustmentFunction;
 
     public Population(int id, int phenotype, String chromosome) {

@@ -8,33 +8,34 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int a,b,c,d,count;
+        double a,b,c,d;
+        int count;
         Scanner scanner = new Scanner(System.in);
         GeneticAlgorithm geneticAlgorithm = new GeneticAlghoritmImpl();
 
         System.out.println("podaj parametr a: ");
-        a = scanner.nextInt();
+        a = scanner.nextDouble();
 
         System.out.println("podaj parametr b: ");
-        b = scanner.nextInt();
+        b = scanner.nextDouble();
 
         System.out.println("podaj parametr c: ");
-        c = scanner.nextInt();
+        c = scanner.nextDouble();
 
         System.out.println("podaj parametr d: ");
-        d = scanner.nextInt();
+        d = scanner.nextDouble();
 
         System.out.println("podaj ilosc obrotw: ");
         count = scanner.nextInt();
 
         geneticAlgorithm.generateTwentyPopulations();
-        geneticAlgorithm.calculateAdjustmentFunction(a, b, c, d);
+        geneticAlgorithm.adjustmentFunction(a, b, c, d);
 
         for(int i=0;i<count;i++) {
             geneticAlgorithm.rouletteWheel();
             geneticAlgorithm.crucifixion();
             geneticAlgorithm.mutation();
-            geneticAlgorithm.calculateAdjustmentFunction(a, b, c, d);
+            geneticAlgorithm.adjustmentFunction(a, b, c, d);
             geneticAlgorithm.increaseQuantityPhenotype();
             if(geneticAlgorithm.ifLargestPhenotype())
             {
@@ -43,7 +44,9 @@ public class Main {
             }
 
         }
+        ((GeneticAlghoritmImpl) geneticAlgorithm).showMax();
 
+//        System.out.println(String.format("%e", 12.345));
     }
 }
 
