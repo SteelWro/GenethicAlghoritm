@@ -167,7 +167,7 @@ public class GeneticAlghoritmImpl implements GeneticAlgorithm {
             System.out.println("największy osobnik: " + populations.get(idMAX));
     }
 
-    public void generateTwentyPopulations(){
+    public void generateTwentySubjects(){
         int i = 0;
         Map<Integer,String> phenotypesAndChromosomes = PhenotypeService.randTwentyPhenotypes();
 

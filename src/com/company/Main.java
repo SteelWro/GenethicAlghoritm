@@ -28,7 +28,7 @@ public class Main {
         System.out.println("podaj ilosc obrotw: ");
         count = scanner.nextInt();
 
-        geneticAlgorithm.generateTwentyPopulations();
+        geneticAlgorithm.generateTwentySubjects();
         geneticAlgorithm.adjustmentFunction(a, b, c, d);
 
         for(int i=0;i<count;i++) {

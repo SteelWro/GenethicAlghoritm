@@ -1,7 +1,7 @@
 package com.company.interfaces;
 
 public interface GeneticAlgorithm {
-    void generateTwentyPopulations();
+    void generateTwentySubjects();
     void adjustmentFunction(double a, double b, double c, double d);
     void rouletteWheel();
     void crucifixion();
